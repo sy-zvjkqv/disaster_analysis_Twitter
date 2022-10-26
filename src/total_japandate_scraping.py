@@ -1,4 +1,4 @@
-import pandas as pd
+andas as pd
 import numpy as np
 import tweepy
 import datetime
@@ -11,7 +11,11 @@ import time
 # CS = "himitu"
 # AT = "himitu"
 
-
+BT = "AAAAAAAAAAAAAAAAAAAAAEdLhgEAAAAAKyu0W6PIo7Zj%2FNB1BpINf%2Fcm6gE%3DT0EVYBss7PGh2rxZ70CXaOvKMrCifCwfVwsK37dXrcPSA851gg"
+CK = "zScfmXxDONhXg9cIjp2SEk6m6"
+CS = "fuAXsoZjTU5zvE1MkievSa7oITjF414wU6EGQUSgBwuTSfT44h"
+AT = "1557281594955923456-ae2iV205fcP82YzSkCj3T9fPCQEEjh"
+AS = "yOYPCy5G7ty8L6OikJWewpbSdEvGGbl1ETHgrRdw8ffGU"
 
 api = tweepy.Client(bearer_token=BT, consumer_key=CK, consumer_secret=CS, access_token=AT, access_token_secret=AS, wait_on_rate_limit=True)
 
