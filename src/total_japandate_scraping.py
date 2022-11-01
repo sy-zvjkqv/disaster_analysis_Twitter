@@ -1,4 +1,4 @@
-andas as pd
+import pandas as pd
 import numpy as np
 import tweepy
 import datetime
@@ -57,8 +57,9 @@ def make_dataframe(search_word,start_time,end_time):
                                     end_time=jst2utc(end_time),
                                     start_time=jst2utc(start_time),
                                     max_results=10):
-        time.sleep(1)
+        time.sleep(10)
         list_tweets.append(response)
+        #break
     result = []
     user_dict = {}
     # Loop through each response object
@@ -102,9 +103,15 @@ def make_dataframe(search_word,start_time,end_time):
 
 if __name__ == '__main__':
     search_word = "place:japan  has:geo lang:ja"
+    month_list = ['01','02','03','04','05','06','07','08','09','10','11','12']
     day_list = ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31']
     tmp = ['01']
-    for day in tmp:
-        start_time,end_time = make_timestamp('2019','08',day)
-        df = make_dataframe(search_word,start_time,end_time)
-        df.to_csv('/home/is/shuntaro-o/dev/disaster_analysis_Twitter/data/tmp.csv')
+    tmp2 = ['01']
+    for month in tmp:
+        df =  pd.DataFrame()
+        for day in tmp2:
+            dirname = '/home/is/shuntaro-o/dev/disaster_analysis_Twitter/data/my_scraping_data/' +  month + 'month.csv'
+            start_time,end_time = make_timestamp('2021',month,day)
+            tmp_df = make_dataframe(search_word,start_time,end_time)
+            df = pd.concat([df, tmp_df])
+        df.to_csv(dirname)
